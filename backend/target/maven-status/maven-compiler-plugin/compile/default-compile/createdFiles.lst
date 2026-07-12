@@ -1,0 +1,8 @@
+com/example/inventory/dto/ItemRequest.class
+com/example/inventory/dto/InventoryStats.class
+com/example/inventory/controller/ItemController.class
+com/example/inventory/repository/ItemRepository.class
+com/example/inventory/model/Item.class
+com/example/inventory/service/ItemService.class
+com/example/inventory/InventoryApplication.class
+com/example/inventory/model/ItemStatus.class
