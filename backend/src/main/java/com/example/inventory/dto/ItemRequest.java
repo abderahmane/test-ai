@@ -3,6 +3,9 @@ package com.example.inventory.dto;
 import com.example.inventory.model.ItemStatus;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
 
 public class ItemRequest {
 
@@ -16,6 +19,9 @@ public class ItemRequest {
     private Integer quantity;
 
     private String location;
+
+    @NotNull(message = "Purchase date is required")
+    private LocalDate purchaseDate;
 
     private ItemStatus status;
 
@@ -52,6 +58,14 @@ public class ItemRequest {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public ItemStatus getStatus() {

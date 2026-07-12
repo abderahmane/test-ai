@@ -67,6 +67,18 @@
       </div>
 
       <div class="field">
+        <label for="purchaseDate">Date d'achat *</label>
+        <input
+          id="purchaseDate"
+          type="date"
+          [ngModel]="form().purchaseDate"
+          (ngModelChange)="update('purchaseDate', $event)"
+          name="purchaseDate"
+          required
+        />
+      </div>
+
+      <div class="field">
         <label for="status">Status</label>
         <select
           id="status"

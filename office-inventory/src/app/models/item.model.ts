@@ -10,6 +10,7 @@ export interface Item {
   category: string;
   quantity: number;
   location?: string | null;
+  purchaseDate: string;
   status: ItemStatus;
 }
 
@@ -18,6 +19,7 @@ export interface ItemRequest {
   category: string;
   quantity: number;
   location?: string | null;
+  purchaseDate: string;
   status: ItemStatus;
 }
 

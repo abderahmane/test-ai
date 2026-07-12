@@ -11,6 +11,7 @@
           <th>Category</th>
           <th>Quantity</th>
           <th>Location</th>
+          <th>Date d'achat</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
@@ -22,6 +23,7 @@
             <td>{{ item.category }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.location || '-' }}</td>
+            <td>{{ item.purchaseDate || '-' }}</td>
             <td>
               <span class="badge" [ngClass]="badgeClass(item.status)">
                 {{ item.status }}

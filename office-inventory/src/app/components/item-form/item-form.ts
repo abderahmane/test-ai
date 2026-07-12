@@ -21,6 +21,7 @@ export class ItemForm {
         category: value.category,
         quantity: value.quantity,
         location: value.location ?? '',
+        purchaseDate: value.purchaseDate ?? '',
         status: value.status,
       });
     } else {
@@ -41,6 +42,7 @@ export class ItemForm {
     category: '',
     quantity: 0,
     location: '',
+    purchaseDate: '',
     status: 'In Stock' as ItemStatus,
   });
 
@@ -54,7 +56,7 @@ export class ItemForm {
 
   submit(): void {
     const f = this.form();
-    if (!f.name.trim() || !f.category.trim() || f.quantity < 0) {
+    if (!f.name.trim() || !f.category.trim() || f.quantity < 0 || !f.purchaseDate) {
       this.error.set('Please fill in all required fields with valid values.');
       return;
     }
@@ -63,6 +65,7 @@ export class ItemForm {
       name: f.name.trim(),
       category: f.category.trim(),
       location: f.location?.trim() || null,
+      purchaseDate: f.purchaseDate,
     };
     const request$ = this.editing()
       ? this.inventoryService.update(this.editing()!.id, payload)
@@ -92,6 +95,7 @@ export class ItemForm {
       category: '',
       quantity: 0,
       location: '',
+      purchaseDate: '',
       status: 'In Stock' as ItemStatus,
     });
     this.error.set(null);
