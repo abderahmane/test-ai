@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "items")
 public class Item {
@@ -27,6 +29,9 @@ public class Item {
     @Column
     private String location;
 
+    @Column(name = "purchase_date")
+    private LocalDate purchaseDate;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ItemStatus status;
@@ -34,11 +39,12 @@ public class Item {
     public Item() {
     }
 
-    public Item(String name, String category, Integer quantity, String location, ItemStatus status) {
+    public Item(String name, String category, Integer quantity, String location, LocalDate purchaseDate, ItemStatus status) {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
         this.location = location;
+        this.purchaseDate = purchaseDate;
         this.status = status;
     }
 
@@ -80,6 +86,14 @@ public class Item {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public ItemStatus getStatus() {

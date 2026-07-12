@@ -87,6 +87,7 @@ public class ItemService {
         item.setCategory(request.getCategory());
         item.setQuantity(request.getQuantity());
         item.setLocation(request.getLocation());
+        item.setPurchaseDate(request.getPurchaseDate());
         item.setStatus(request.getStatus() == null ? ItemStatus.IN_STOCK : request.getStatus());
     }
 
