@@ -1,0 +1,41 @@
+<section class="card table-card">
+  @if (loading) {
+    <p class="empty-state">Loading inventory…</p>
+  } @else if (items.length === 0) {
+    <p class="empty-state">No items found. Add your first inventory item above.</p>
+  } @else {
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of items; track item.id) {
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.location || '-' }}</td>
+            <td>
+              <span class="badge" [ngClass]="badgeClass(item.status)">
+                {{ item.status }}
+              </span>
+            </td>
+            <td>
+              <div class="actions-cell">
+                <button class="btn btn-sm btn-edit" (click)="edit.emit(item)">Edit</button>
+                <button class="btn btn-sm btn-delete" (click)="delete.emit(item)">Delete</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

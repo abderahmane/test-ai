@@ -1,0 +1,95 @@
+<section class="card">
+  <h2>{{ editing() ? 'Edit Item' : 'Add New Item' }}</h2>
+
+  @if (error()) {
+    <p class="form-error">{{ error() }}</p>
+  }
+
+  <form (ngSubmit)="submit()">
+    <div class="form-grid">
+      <div class="field">
+        <label for="name">Item Name *</label>
+        <input
+          id="name"
+          type="text"
+          [ngModel]="form().name"
+          (ngModelChange)="update('name', $event)"
+          name="name"
+          placeholder="e.g. Dell Monitor"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="category">Category *</label>
+        <input
+          id="category"
+          type="text"
+          [ngModel]="form().category"
+          (ngModelChange)="update('category', $event)"
+          name="category"
+          list="categoryList"
+          placeholder="e.g. Electronics"
+          required
+        />
+        <datalist id="categoryList">
+          @for (c of categories(); track c) {
+            <option [value]="c"></option>
+          }
+        </datalist>
+      </div>
+
+      <div class="field">
+        <label for="quantity">Quantity *</label>
+        <input
+          id="quantity"
+          type="number"
+          min="0"
+          step="1"
+          [ngModel]="form().quantity"
+          (ngModelChange)="update('quantity', +$event)"
+          name="quantity"
+          placeholder="0"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="location">Location</label>
+        <input
+          id="location"
+          type="text"
+          [ngModel]="form().location"
+          (ngModelChange)="update('location', $event)"
+          name="location"
+          placeholder="e.g. Floor 2 - Room 204"
+        />
+      </div>
+
+      <div class="field">
+        <label for="status">Status</label>
+        <select
+          id="status"
+          [ngModel]="form().status"
+          (ngModelChange)="update('status', $event)"
+          name="status"
+        >
+          @for (s of statuses; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">
+        {{ editing() ? 'Update Item' : 'Add Item' }}
+      </button>
+      @if (editing()) {
+        <button type="button" class="btn btn-secondary" (click)="cancel()">
+          Cancel
+        </button>
+      }
+    </div>
+  </form>
+</section>
